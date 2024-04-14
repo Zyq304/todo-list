@@ -1,19 +1,18 @@
 import Dexie from "dexie";
 import { useLiveQuery } from "dexie-react-hooks";
 
-export const db = new Dexie("todo-photos"); // 2à The database is created here.
-db.version(1).stores({ // 3 à The table “photos” will contain just and id attribute.
- photos: "id", // Primary key, don't index photos. 
- // Why? See https://dexie.org/docs/Version/Version.stores()#warning
+export const db = new Dexie("todo-photos"); 
+db.version(1).stores({ 
+ photos: "id", 
+ 
 });
-async function addPhoto(id, imgSrc) { // 4 à To save a photo, the id will be passed as prop
+async function addPhoto(id, imgSrc) { 
  console.log("addPhoto", imgSrc.length, id);
  try {
- // Add the new photo with id used as key for todo array in localStorage
- // to avoid having a second pk for one todo item
+ 
  const i = await db.photos.add({
-    id: id, // 5 à Create & stored an object with both an indexed id 
-    imgSrc: imgSrc, // and image (data URL string in base64)
+    id: id, 
+    imgSrc: imgSrc, 
     });
     console.log(`Photo ${imgSrc.length} bytes successfully added. Got id ${i}`);
     } catch (error) {

@@ -5,8 +5,9 @@
   box-sizing: border-box;
 }
 *:focus-visible {
-  outline: 3px dashed #228bec;
+  outline: 1px solid black;
   outline-offset: 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 html {
   font: 62.5% / 1.15 sans-serif;
@@ -80,14 +81,17 @@ body {
   cursor: pointer;
   padding: 0.8rem 1rem 0.7rem;
   text-transform: capitalize;
+  border-radius: 5px;
 }
 .btn.toggle-btn {
   border-color: #d3d3d3;
   border-width: 1px;
+  border-radius: 5px;
 }
 .btn.toggle-btn[aria-pressed="true"] {
-  border-color: #4d4d4d;
-  text-decoration: underline;
+  background: #000;
+  color: white;
+  background-image: linear-gradient( 135deg, #818CF8 10%, #736EFE 100%);
 }
 .btn__danger {
   background-color: #ca3c3c;
@@ -98,8 +102,10 @@ body {
   border-color: lightgrey;
 }
 .btn__primary {
-  background-color: #000;
   color: #fff;
+  border-radius: 5px;
+  background-image: linear-gradient( 135deg, #818CF8 10%, #736EFE 100%);
+  border: 0;
 }
 .btn-group {
   display: flex;
@@ -156,6 +162,7 @@ body {
   margin: 2rem 0 4rem 0;
   padding: 1rem;
   position: relative;
+  margin-top: 0;
 }
 @media screen and (min-width: 550px) {
   .todoapp {
@@ -176,6 +183,33 @@ body {
   margin-bottom: 1rem;
   max-width: 100%;
   text-align: center;
+  padding-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.block{
+  width: 6px;
+  height: 25px;
+  border-radius: 2px;
+  background-image: linear-gradient( 135deg, #8e94c6 10%, #818CF8 100%);
+  margin-right: 15px;
+}
+.gradient-text {
+  /* 线性渐变从蓝色到红色 */
+  background: linear-gradient(to right, #8e94c6, #818CF8);
+  /* 使文字不可选中 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* 使用透明度来实现文字渐变效果 */
+  color: transparent;
+  /* 使用背景色填充文字 */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  background-clip: text;
 }
 .label__lg {
   line-height: 1.01567;
@@ -190,7 +224,7 @@ body {
 }
 .input__lg:focus-visible {
   border-color: #4d4d4d;
-  box-shadow: inset 0 0 0 2px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 [class*="__lg"] {
   display: inline-block;
@@ -216,13 +250,19 @@ body {
   flex: 0 0 100%;
 }
 .todo-text {
-  border: 2px solid #565656;
+  /* border: 2px solid #565656; */
   min-height: 4.4rem;
   padding: 0.4rem 0.8rem;
   width: 100%;
+  border-radius: 5px !important;
+  padding: 11px 10px;
+  font-size: 14px;
+  border: 2px #818CF8 solid;
+  border-radius: 5px;
+  background: #e8e8e8;
 }
 .todo-text:focus-visible {
-  box-shadow: inset 0 0 0 2px;
+  /* box-shadow: 0 0 0 2px; */
 }
 /* End todo item styles */
 /* Checkbox styles */
@@ -246,6 +286,8 @@ body {
   left: -2px;
   top: -2px;
   width: 44px;
+  border-radius: 50%;
+  border: 1px solid red;
 }
 .c-cb > input[type="checkbox"] {
   -webkit-font-smoothing: antialiased;
@@ -266,14 +308,15 @@ body {
   touch-action: manipulation;
 }
 .c-cb > label::before {
-  background: transparent;
+  background-image: linear-gradient(135deg, #818CF8 10%, #736EFE 100%);
+  color: white;
   border: 2px solid currentcolor;
   content: "";
   position: absolute;
 }
 .c-cb > input[type="checkbox"]:focus-visible + label::before {
   border-width: 4px;
-  outline: 3px dashed #228bec;
+  /* outline: none; */
 }
 .c-cb > label::after {
   background: transparent;
@@ -292,5 +335,111 @@ body {
 }
 .c-cb > input[type="checkbox"]:checked + label::after {
   opacity: 1;
+  color: white;
 }
 /* End checkbox styles */
+#new-todo-input{
+  padding: 5px 15px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+
+.btn-ani {
+  outline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #818CF8;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-ani:hover {
+  opacity: .95;
+}
+
+.btn-ani .animation {
+  border-radius: 100%;
+  animation: ripple 0.6s linear infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+  }
+}
+
+.coolinput {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.coolinput label.text {
+  font-size: 16px;
+  color: #818CF8;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #e8e8e8;
+  width: fit-content;
+}
+
+.coolinput input[type=text].input {
+  padding: 11px 10px;
+  font-size: 14px;
+  border: 2px #818CF8 solid;
+  border-radius: 5px;
+  background: #e8e8e8;
+}
+
+.coolinput input[type=text].input:focus {
+  outline: none;
+}
+
+.edit-btn{
+  border: 0;
+  background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
+  color: white;
+}
+.photo-btn{
+  border: 0;
+  color: white;
+  background-image: linear-gradient( 135deg, #92FFC0 10%, #002661 100%);
+}
+.view-btn{
+  border: 0;
+  color: white;
+  background-image: linear-gradient( 135deg, #F6CEEC 10%, #D939CD 100%);
+}
+.btn__danger{
+  border: 0;
+  color: white;
+  background-image: linear-gradient( 135deg, #FFAA85 10%, #B3315F 100%);
+}
+.todo-cancel{
+  border: 0;
+  color: white;
+  background-image: linear-gradient( 135deg, #FFAA85 10%, #B3315F 100%);
+}

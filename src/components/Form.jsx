@@ -1,16 +1,16 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 function Form(props) {
   const [name, setName] = useState("");
   const [addition, setAddition] = useState(false);
 
-  useEffect(() => { 
+  useEffect(() => {
     if (addition) {
-    console.log("useEffect detected addition");
-    props.geoFindMe();
-    setAddition(false);
+      console.log("useEffect detected addition");
+      props.geoFindMe();
+      setAddition(false);
     }
-    });
+  });
 
   function handleChange(event) {
     setName(event.target.value);
@@ -30,17 +30,23 @@ function Form(props) {
           What needs to be done?
         </label>
       </h2>
-      <input
-        type="text"
-        id="new-todo-input"
-        className="input input__lg"
-        name="text"
-        autoComplete="off"
-        value={name}
-        onChange={handleChange}
-      />
-      <button type="submit" className="btn btn__primary btn__lg">
-        Add
+
+      <div class="coolinput">
+        <label for="input" class="text">
+          Task Title:
+        </label>
+        <input
+          type="text"
+          placeholder="Write here..."
+          name="input"
+          class="input"
+          value={name}
+          onChange={handleChange}
+        />
+      </div>
+
+      <button type="submit" class="btn-ani">
+        <i class="animation"></i>Add<i class="animation"></i>
       </button>
     </form>
   );
