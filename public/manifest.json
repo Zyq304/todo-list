@@ -1,6 +1,6 @@
 {
-    "name": "caticon",
-    "short_name": "cat",
+    "name": "todolist",
+    "short_name": "list",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#fff",

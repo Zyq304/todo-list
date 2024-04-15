@@ -147,6 +147,8 @@ function App(props) {
         name={task.name}
         completed={task.completed}
         key={task.id}
+        latitude={task.location.latitude}
+        longitude={task.location.longitude}
         location={task.location}
         toggleTaskCompleted={toggleTaskCompleted}
         photoedTask={photoedTask}
